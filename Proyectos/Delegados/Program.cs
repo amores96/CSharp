@@ -9,11 +9,7 @@ namespace Delegados {
 
     static void Main(string[] args) {
 
-      // Prueba Pull Request
-
-      // Prueba comit 2.
-
-      // Prueba commit 3.
+      // Borrar comentarios.
 
       // DELEGADO.  Ejecutamos el metodo ejecutarDelegado donde se aplica un ejemplo de delegado.
       Delegados.EjecutarDelegado();
