@@ -9,7 +9,7 @@ namespace Delegados {
 
     static void Main(string[] args) {
 
-      // Borrar comentarios.
+      // Commit 1 sin insertar.
 
       // DELEGADO.  Ejecutamos el metodo ejecutarDelegado donde se aplica un ejemplo de delegado.
       Delegados.EjecutarDelegado();
