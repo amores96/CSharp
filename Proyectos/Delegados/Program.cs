@@ -9,6 +9,8 @@ namespace Delegados {
 
     static void Main(string[] args) {
 
+      // Commit rama Test.
+
       // DELEGADO.  Ejecutamos el metodo ejecutarDelegado donde se aplica un ejemplo de delegado.
       Delegados.EjecutarDelegado();
 
