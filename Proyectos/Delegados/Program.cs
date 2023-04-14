@@ -30,8 +30,6 @@ namespace Delegados {
       Console.ReadKey();
 
       // Commit main.
-
-      // Cambios master....
     }
 
 
