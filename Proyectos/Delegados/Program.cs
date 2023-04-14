@@ -11,6 +11,8 @@ namespace Delegados {
 
       // Prueba Pull Request
 
+      // Prueba comit 2.
+
       // DELEGADO.  Ejecutamos el metodo ejecutarDelegado donde se aplica un ejemplo de delegado.
       Delegados.EjecutarDelegado();
 
