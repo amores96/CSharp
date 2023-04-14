@@ -12,6 +12,7 @@ namespace Delegados {
       // Commit 1 sin insertar.
       // Commit 2 sin insertar.
       // Commit 3 sin insertar.
+      // Commit 4 sin insertar.
 
       // DELEGADO.  Ejecutamos el metodo ejecutarDelegado donde se aplica un ejemplo de delegado.
       Delegados.EjecutarDelegado();
