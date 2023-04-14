@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-// Commit rama main.
 
 namespace Delegados {
   class Delegados {     // Clase para poner en practica los delegados.
