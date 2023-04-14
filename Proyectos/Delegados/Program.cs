@@ -13,6 +13,8 @@ namespace Delegados {
 
       // Comentario 2.
 
+      // Comentario 3.
+
       // DELEGADO.  Ejecutamos el metodo ejecutarDelegado donde se aplica un ejemplo de delegado.
       Delegados.EjecutarDelegado();
 
