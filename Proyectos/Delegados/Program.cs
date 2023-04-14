@@ -15,8 +15,6 @@ namespace Delegados {
 
       // Prueba commit 3.
 
-      // Prueba commit 4, sin cargar remoto.
-
       // DELEGADO.  Ejecutamos el metodo ejecutarDelegado donde se aplica un ejemplo de delegado.
       Delegados.EjecutarDelegado();
 
