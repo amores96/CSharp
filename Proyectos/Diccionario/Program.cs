@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Diccionario {
   class Program {
+
+    // Merge master con Test.
+
     static void Main(string[] args) {
       Dictionary<string, long> agenda = new Dictionary<string, long>();
 
