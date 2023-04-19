@@ -6,6 +6,8 @@ using System.Text;
 namespace TEST {
   class Program {
 
+    // Carga Test 1.
+
 
     public static bool IsObsolete(Enum value) {
       Type enumType = value.GetType();
