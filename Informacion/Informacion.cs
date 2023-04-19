@@ -661,22 +661,24 @@ string cadena1 = "";
 				// - Quitar un value a partir de una Key. Nos devuelve un booleano con el estado de la operacion.
 					bool <variableEstado> = <nombreDiccionario>.Remove(<Key>);
 						bool estado = empleados.Remove("Adrian");
-	#endregion
+#endregion
 
 #endregion
 
 #region METODOS
 
+	// Los metodos deben compilarse antes de ser llamados, para cuando se compila la parte donde se les llama que ya esten compilados.
+
 	#region Comun
-		static int nombreFuncion(int _variable1){
+static int nombreFuncion(int _variable1){
 				<instrucciones...>
 				return _variable1;
 			}
-	#endregion
+#endregion
 
 	#region Matrices
-		//Argumentos
-			static void nombreFuncion(int[,] matriz){
+//Argumentos
+static void nombreFuncion(int[,] matriz){
 				<instrucciones>
 			}
 
@@ -729,27 +731,43 @@ string cadena1 = "";
 				objetoDelegado(<argumentos>);
 		#endregion
 
+		#region Delegado en linea o Metodo Anonimo
+			// Es util para crear delegados sin asignarle ningun metodo, podemos definir el metodo en el delegado.
+			// Los metodos con nombres se compilan primero, antes que los metodos anonimos.
+			// Es util para pasar un metodo anonimo como parametro de un metodo.
+			// Es util para utilizar en eventos.
+
+
+		#endregion
+
+		#region Delegado Multidifusion
+								// Los delegados multidifusion nos permiten asignar varios metodos a un mismo delegado.
+								// Debemos pasar los argumentos de todos los metodos a los que apunta el delegado.
+								// Los metodos deben ser de tipo de retorno void.
+								// Podemos crear eventos que ejecutan muchos metodos cuando el evento es invocado.
+
+		#endregion
+
 		#region Delegados Predicados
-			// Son delegados que solo pueden devolver un booleano.
-			// Se utilizan principalmente para filtrar, en base a una condicion, elementos que estan en colecciones como listas, diccionarios, etc...
+								// Son delegados que solo pueden devolver un booleano.
+								// Se utilizan principalmente para filtrar, en base a una condicion, elementos que estan en colecciones como listas, diccionarios, etc...
 
 		#endregion
 
 		#region Expresiones Lambda
-			// Son funciones anonimas, es decir, que no tienen nombre.
-			// Se utilizan para simplificar la sintaxis de una funcion/metodo.
-			// Se utilizan para ejecutar tareas, es decir, funciones que no necesitan ser nombradas.
-			// Se utilizan cuando creamos delegados sencillos.
-			// Tambien se utilizan en expresiones LINQ query.
-			// Sintaxis:
-				<parametros> => <expresion/bloque sentencia>;
-					// Parametros  =  Son los parametros que lleva el metodo como argumentos.
-					// Expresion o Bloque Sentencia  =  Es lo que lleva la funcion/metodo en su interior, es decir, lo que realiza la funcion/metodo.
+								// Son funciones anonimas, es decir, que no tienen nombre y se pueden usar para crear delegados o tipos de arbol de expresion.
+								// Se utilizan para simplificar la sintaxis de una funcion/metodo.
+								// Con expresiones lambda se pueden escribir funciones locales que pueden pasarse como argumentos o como retorno de funciones.
+								// Se utilizan cuando creamos delegados sencillos.
+								// Son muy utiles en expresiones LINQ query.
+								// Sintaxis:
+								< parametros > => <expresion/bloque sentencia>;
+									// Parametros  =  Son los parametros que lleva el metodo como argumentos.
+									// Expresion o Bloque Sentencia  =  Es lo que lleva la funcion/metodo en su interior, es decir, lo que realiza la funcion/metodo.
 
 
-#endregion
-
-#endregion
+				#endregion
+	#endregion
 
 #endregion
 

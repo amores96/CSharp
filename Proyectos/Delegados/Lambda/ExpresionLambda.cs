@@ -8,25 +8,17 @@ namespace Delegados {
 
   class ExpresionLambda {
 
-    public static int ObtenerCuadrado(int _num) {
-      return _num * _num;
-    }
-
-    public static int SumarNumeros(int _num1, int _num2) {
-      return _num1 + _num2;
-    }
-
     // Declaramos el delegado.
     delegate int delegadoCuadrado(int _num);
     delegate int delegadoSuma(int _num1, int _num2);
-    delegate bool delegadoCompararEdad(int _edad1, int _edad2);
+
 
     public static void EjecutarExpresionLambda() {
 
       // <<<<<<<<<<<<<<<<<<<<  EXPRESION LAMBDA 1 PARAMETRO  >>>>>>>>>>>>>>>>>>>>
       // Declaramos el objeto operacionCuadrado de tipo de delegado delegadoCuadrado que apunta al metodo ObtenerCuadrado.
       delegadoCuadrado operacionCuadrado;
-      operacionCuadrado = new delegadoCuadrado(ObtenerCuadrado);
+      operacionCuadrado = new delegadoCuadrado(Metodos.ObtenerCuadrado);
 
       // Llamamos al objeto operacionCuadrado para que llame al metodo ObtenerCuadrado.
       int retornoCuadrado = operacionCuadrado(2);
@@ -42,7 +34,7 @@ namespace Delegados {
 
       // <<<<<<<<<<<<<<<<<<<<  EXPRESION LAMBDA 2 PARAMETROS  >>>>>>>>>>>>>>>>>>>>
       // Declaramos el objeto operacionSuma de tipo de delegado delegadoSuma que apunta al metodo SumarNumeros.
-      delegadoSuma operacionSuma = new delegadoSuma(SumarNumeros);
+      delegadoSuma operacionSuma = new delegadoSuma(Metodos.SumarNumeros);
 
       // Llamamos al objeto operacionSuma para que llame al metodo SumarNumeros.
       int retornoSuma = operacionSuma(3, 2);
@@ -61,30 +53,54 @@ namespace Delegados {
       List<int> sucesionNumeros = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
       // Utilizamos una expresion lambda como un predicado. Los predicados si la condicion es true (num % 2 == 0) devuelven un valor (num) y lo va guardando en la lista numerosPares.
-      List<int> numerosPares = sucesionNumeros.FindAll(num => num % 2 == 0);
+      // La variable (num) es una variable transitoria local que solo existe en ese pequeño ambito.
+      List<int> numerosPares = sucesionNumeros.FindAll( num => (num % 2 == 0) );
 
       // Imprimimos por consola la lista de numeros pares guardada con expresion lambda como si fuera un foreach.
       // Si en la expresion/bloque sentencia de la expresion lambda queremos varias lineas de codigo, debemos hacer entre llaves y cada linea con (;).
-      numerosPares.ForEach(num => { Console.Write("Numero par = "); Console.WriteLine(num); });
+      numerosPares.ForEach(num => { 
+        Console.Write("Numero par = "); 
+        Console.WriteLine(num); 
+      });
 
 
       // <<<<<<<<<<<<<<<<<<<<  EXPRESION LAMBDA CON CLASES  >>>>>>>>>>>>>>>>>>>>
       // Vamos a comprobar si la edad de dos personas es igual con expresiones lambda.
 
       Persona P1 = new Persona("Adrian", 26);
-      Persona P2 = new Persona("Jose", 26);
+      Persona P2 = new Persona("Jose", 30);
 
-      delegadoCompararEdad operacionCompararEdad = (edad1, edad2) => edad1 == edad2;
+      Persona.delegadoCompararEdad operacionCompararEdad = ((_p1, _p2) => _p1.Edad == _p2.Edad);
 
-      bool edadMayor = operacionCompararEdad(P1.Edad, P2.Edad);
+      bool edadMayor = operacionCompararEdad(P1, P2);
 
-      if (edadMayor) Console.WriteLine("La edad de las dos personas es la misma.");
-      else Console.WriteLine("La edad de las dos personas no es la misma.");
+      if (edadMayor) Console.WriteLine("Tienen la misma edad.");
+      else Console.WriteLine("NO tienen la misma edad.");
+
+
+      edadMayor = operacionCompararEdad(new Persona("Mario", 15), new Persona("Manu", 15));
+
+      if (edadMayor) Console.WriteLine("Tienen la misma edad.");
+      else Console.WriteLine("NO tienen la misma edad.");
 
     }
 
+    class Metodos {
+
+      public static int ObtenerCuadrado(int _num) {
+        return _num * _num;
+      }
+
+      public static int SumarNumeros(int _num1, int _num2) {
+        return _num1 + _num2;
+      }
+
+    }
 
     class Persona {
+
+      public delegate bool delegadoCompararEdad(Persona _p1, Persona _p2);
+
       private string nombre;
       private int edad;
 

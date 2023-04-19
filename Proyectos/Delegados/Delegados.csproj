@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DelegadoPredicado.cs" />
-    <Compile Include="Delegados.cs" />
-    <Compile Include="ExpresionLambda.cs" />
+    <Compile Include="Delegados\DelegadoMultidifusion.cs" />
+    <Compile Include="Delegados\DelegadoPredicado.cs" />
+    <Compile Include="Delegados\Delegados.cs" />
+    <Compile Include="Lambda\ExpresionLambda_2.cs" />
+    <Compile Include="Lambda\ExpresionLambda.cs" />
+    <Compile Include="Delegados\DelegadoEnLinea.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
