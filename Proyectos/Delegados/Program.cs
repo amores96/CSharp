@@ -9,7 +9,11 @@ namespace Delegados {
 
     static void Main(string[] args) {
 
-      // Borramos los primeros comentarios.
+      // Comentario 1.
+
+      // Comentario 2.
+
+      // Comentario 3.
 
       // DELEGADO.  Ejecutamos el metodo ejecutarDelegado donde se aplica un ejemplo de delegado.
       Delegados.EjecutarDelegado();
