@@ -160,13 +160,55 @@ namespace TEST {
       Console.ReadKey();
     }
 
+    static void removePath(string _path) {
+
+      string cmdCommandType = "rmdir";
+      string cmdAtributes = "/s /q";
+      string[] cmdCommandParts = { cmdCommandType, cmdAtributes, _path };
+      string cmdCommand = string.Join(" ", cmdCommandParts);
+
+      try {
+
+        Console.WriteLine("Se ha iniciado la eliminacion...");
+
+        Process cmd = new Process();
+        cmd.StartInfo.FileName = "cmd.exe";
+        cmd.StartInfo.RedirectStandardInput = true;
+        cmd.StartInfo.RedirectStandardOutput = true;
+        cmd.StartInfo.CreateNoWindow = true;
+        cmd.StartInfo.UseShellExecute = false;
+        cmd.Start();
+
+        cmd.StandardInput.WriteLine(cmdCommand);
+        cmd.StandardInput.Flush();
+        cmd.StandardInput.Close();
+        Console.WriteLine(cmd.StandardOutput.ReadToEnd());
+        cmd.Close();
+
+        
+
+      } catch (Exception ex) {
+
+        Console.WriteLine("Error al realizar la eliminacion.\n\tExcepcion = " + ex.Message);
+
+      } finally {
+        Console.WriteLine("Ha finalizado la eliminacion correctamente.");
+      }
+    }
+
     static void Main(string[] args) {
 
-      string pathMAF = @"C:\MAF\";
-      string installationName = "G7_Kaki_Principal";
-      string copyInstallationName = "G7_Kaki_Secundaria";
+      //string pathMAF = @"C:\MAF\";
+      //string installationName = "G7_Kaki_Principal";
+      //string copyInstallationName = "G7_Kaki_Secundaria";
 
-      copyInstallation(pathMAF, installationName, copyInstallationName);
+      //copyInstallation(pathMAF, installationName, copyInstallationName);
+
+      string path = @"C:\MAF\G7_Kaki_Secundaria";
+
+      removePath(path);
+
+      Console.ReadKey();
 
     }
   }
