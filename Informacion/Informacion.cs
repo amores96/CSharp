@@ -8,14 +8,26 @@ DEFINICIONES
 
 	- Algoritmo  =  Una vez subdividido, creamos el algoritmo que consiste en una lista de pasos finitos que se ejecutan de forma secuencial para resolver un problema.
 
-	- Keyword (Palabra Clave)  =  Son palabras que utiliza el lenguaje y que no se pueden declarar como identificadores de variables.
+	- Identificadores = Nombres que identifican los elementos (namespaces, Clases, Metodos, Variables, Constantes...)
+		- Solo admite letras, numeros y (_).
+		- No pueden empezar por numero, solo por letra o (_).
+		- Case Sensitive = Distingue entre mayusculas y minusculas en metodos, clases, variables,...
+		- Keyword (Palabra Clave)  =  Son palabras que utiliza el lenguaje y que no se pueden declarar como identificadores.
+
+	- Ambito = Son bloques de codigo delimitada por {}, cada bloque tiene un ambito.
+
+	- Flujo de ejecución = Define la secuencia de ejecución que sigue el programa para ejecutarse.
+
+	- Main = Metodo de entrada a cualquier programa. Es estatico porque cuando se inicia un programa no hay ningun objeto instanciado.
+
+	- Modularizacion = Un programa se debe dividir en partes pequeñas para que sea modular.
 
 */
 #endregion
 
 #region CONSOLA
-	//Salidas
-		System.Console.Write("Texto a mostrar.");	//No tiene (\n) al final, por tanto no salta de linea.
+//Salidas
+System.Console.Write("Texto a mostrar.");	//No tiene (\n) al final, por tanto no salta de linea.
 		System.Console.WriteLine("Variable 1 = {0}.  Variable 2 = {1}", nombreVariable1, nombreVariable2); 	//Para mostrar texto con variables.
 	
 	//Entradas
@@ -25,47 +37,68 @@ DEFINICIONES
 
 #region DATOS
 
-	#region Tipos
-		// Tipos de VALOR  =  Almacenan el dato directamente.
-			//- Simples(bool, byte, int, float, double, decimal, etc...)
-			//- Numeracion
-			//- Estructura
-			//- Tupla
+/*
+	Variable = Espacio de memoria RAM donde se almacena un valor que puede cambiar durante la ejecucion de un programa.
 
-		// Tipos de REFERENCIA  =  Almacenan referencias en sus datos, es decir, objetos. Podriamos tener 2 referencisa que apunten al mismo objeto, por tanto modificando uno los modificamos todos.
-			//- Clase(String, Colecciones, etc...)
-			//- Interfaz
-			//- Matriz
-			//- Delegados
-			//- VAR:
-				//- Nos permite definir una variable sin especificar el tipo. El compilador le asignara en funcion de la informacion que almacenara. 
-				//- Se conoce como Variables locales con asignacion implicita de tipos.
-				//- CONDICIONES:
-					//- Se debe inicializar en la misma linea que se declara.
-					//- No se puede declarar mas de 1 variable en la misma linea.
-					//- Solo se pueden declarar variables con tipo implicito:
-						//1.Variables locales con ambito de metodo.
-						//2. Inicializacion en bucles for.
-						//3. En instrucciones foreach
+  Las variables necesitan dos acciones:
+    - Declaracion = Crea la variable en la memoria. Se declara el tipo y el nombre de la variable.
+    - Inicializacion = Asignar un valor a la variable. Es necesario inicializar la variable si se va a utilizar.
+ */
+
+#region Tipos
+/*
+	Tipos de VALOR  =  Almacenan el dato directamente y maneja el procesador directamente.
+		- Primitivos (Boleanos, Enteros y Reales)
+				- Enteros:
+					- Con signo: (sbyte, short, int, long)
+					- Sin Signo: (byte, ushort, uint, ulong)
+				- Reales: (float, double, decimal)
+		- Numeracion
+		- Estructura
+
+
+	Tipos de REFERENCIA  =  Almacenan referencias al dato, es decir se almacena una direccion de memoria. Podriamos tener 2 referencisa que apunten al mismo objeto, por tanto modificando uno los modificamos todos.
+		- Clase(String, Colecciones, etc...)
+		-Interfaz
+		- Matriz
+		- Delegados
+		- VAR:
+			- Nos permite definir una variable sin especificar el tipo. El compilador le asignara el tipo en funcion de la informacion que almacenara en tiempo de ejecución. 
+			- Se conoce como Variables locales con asignacion implicita de tipos.
+			- CONDICIONES:
+				- Se debe inicializar en la misma linea que se declara.
+				- No se puede declarar mas de 1 variable en la misma linea.
+				- Solo se pueden declarar variables con tipo implicito:
+					1. Variables locales con ambito de metodo.
+					2. Inicializacion en bucles for.
+					3. En instrucciones foreach.
+*/
 
 		//Ejemplo:
 		string cadena1 = "Hola";  // Un String es un tipo de dato de referencia, ya que String es una clase.
 		string cadena2 = cadena1; // cadena2 es una referencia que apunta al mismo objeto que cadena1, por tanto, si modificamos cadena2 estamos modificando cadena1 de forma implicita.
-	#endregion
+#endregion
 
-	#region Paso por Valor VS Referencia
-		//-Pasar por Valor = Se realiza una copia del dato. No se trabaja con el original.
-		//- Pasar por Referencia:
-			//ref = Se envia una referencia de la variable. Por tanto se trabaja con el original. Es necesario inicializar la variable antes de pasarla por referencia como argumento.
-				//Sintaxis = ref <tipoVariable> <nombreVariable>
+#region Paso por Valor VS Referencia
+//-Pasar por Valor = Se realiza una copia del dato. No se trabaja con el original.
+//- Pasar por Referencia:
+//ref = Se envia una referencia de la variable. Por tanto se trabaja con el original, con la misma direccion de memoria. Es necesario inicializar la variable antes de pasarla por referencia como argumento.
+//Sintaxis = ref <tipoVariable> <nombreVariable>
 
-			//out = Se utiliza cuando la variable no se ha inicializado antes de ser enviada a un metodo como argumento. Es como una salida del metodo pero que esta declarado fuera de este.
-				//Sintaxis = out <tipoVariable> <nombreVariable>
-	#endregion
+//out = Se utiliza cuando la variable no se ha inicializado antes de ser enviada a un metodo como argumento. Es como una salida del metodo pero que esta declarado fuera de este.
+//Sintaxis = out <tipoVariable> <nombreVariable>
+#endregion
 
-	#region Decimales
-		// Declaracion
-			double <nombreVariable> = 8.5;
+#region Constantes
+	// Son datos que no pueden cambiar su valor en ejecución.
+	// Se deben declarar e inicializar en la misma linea.
+	// Se escriben en mayusculas.
+		const int CONSTANTE_1 = 15.
+#endregion
+
+#region Decimales
+// Declaracion
+double < nombreVariable> = 8.5;
 			float <nombreVariable> = 8.5F;		//Se debe asignar el sufijo F para indicarle que es de tipo float.
 			decimal <nombreVariable> = 8.5M;  //Se debe asignar el sufijo M para indicarle que es de tipo decimal.
 
@@ -89,12 +122,22 @@ DEFINICIONES
 
 		#region Conversion Tipos
 			// - Hay dos tipos de conversion:
-				// 1. Implicita  -  Donde no se necesita ninguna sintaxis para realizar la conversion. Se hace de forma automatica. Por ejemplo cuando guardamos una variable de tipo byte en otra de tipo int.
+				// 1. Implicita  -  Donde no se necesita ninguna sintaxis para realizar la conversion. Se hace de forma automatica. Por ejemplo cuando guardamos una variable de tipo byte en otra de tipo int. Hay una tabla que muestra las conversiones implicitas compatibles.
 				// 2. Explicita  -  Requieren una expresion Cast para realizar conversiones en las que se puede perder informacion, como por ejemplo intentar guardar una variable int en una variable byte.
 					<variableInt> = Convert.ToInt32(<variableString>);	//Convertimos el string a tipo int. Convert es una clase y ToInt32() un metodo para convertir tipos de datos.
 			
-			// CAST  -  Pasamos una variable entera a una variable byte.
+			// CAST  -  Conversion EXPLICITA.
+				// Pasamos una variable entera a una variable byte.
 				byte <variableByte> = (int)<variableInt>
+
+				// PARSE
+					// PARSE = Pasar. Pasamos de un tipo de dato a otro.
+					// Convierte texto en un tipo de dato.
+					// EXCEPCION: Cuando no se puede realizar la conversion, se produce una excepcion. Por ejemplo si el string contiene letras y lo intentamos convertir a un int.
+					int variableEntera = int.Parse(string _cadena);
+					double variableDouble = double.Parse(string _cadena);
+
+					int entradaEdad = int.Parse(Console.ReadLine());
 
 			// BOXING y UNBOXING  -  Una variable de cualquier tipo puede ser tratada como un objeto.
 				// Boxing  =  Convertir cualquier tipo de dato a un tipo Object. Conversion implicita o explicita. Asigna una instancia de object en la memoria HEAP y se copia el valor a ese objeto. Ejemplo:
@@ -108,11 +151,12 @@ DEFINICIONES
 					int num1 = 10;
 					object resultado;
 					resultado = (int)num1 + 10;   //La expresion cast nos permite realizar una operacion con el Object directamente.
-		#endregion
 
 #endregion
 
-	#region Tupla
+#endregion
+
+#region Tupla
 		// - Es una variable que tiene campos. Cada campo tiene un identificador y un tipo de dato.
 		// - Sintaxis  =  (tipo) <identificador> = (<valor>);
 
@@ -339,6 +383,11 @@ string cadena1 = "";
 						// .Replace()  =  Permite modificar un caracter o una parte de un string por otra especificada. Por ejemplo, podemos modificar la letra 'a' por '@'. 
 						string cadena14 = cadena13.Replace("a", "@");
 						Console.WriteLine(cadena14);
+
+					// INTERPOLACION
+						// Es como concatenar/sumar string pero con diferente sintaxis
+						string nombre = "Adrian Amores";
+						string cadenaCompleta = $"Hola {nombre}, como estas?";
 
 					// ELIMINAR
 					// .Remove()  =  Nos permite eliminar una parte de la cadena. Trabaja con indices con sobrecarga de dos formas:
@@ -665,18 +714,67 @@ string cadena1 = "";
 
 #endregion
 
-#region METODOS
+#region CONDICIONALES
 
-	// Los metodos deben compilarse antes de ser llamados, para cuando se compila la parte donde se les llama que ya esten compilados.
-
-	#region Comun
-static int nombreFuncion(int _variable1){
-				<instrucciones...>
-				return _variable1;
-			}
+#region if
+	if (<condicion>) instrucciones...;
+	else if (<condicion>) instrucciones...;
+	else instrucciones...;
 #endregion
 
-	#region Matrices
+#region Operador Ternario ?
+	<condition> ? <valorTrue> : <valorFalse>;
+#endregion
+
+#region SWITCH
+switch (variable) {
+	case value1:
+		instrucciones...;
+		break;
+	case value2:
+		instrucciones...;
+		break;
+	default:
+		instrucciones...;
+		break;
+}
+#endregion
+
+#endregion
+
+#region METODOS
+
+// Los metodos deben compilarse antes de ser llamados, para cuando se compila la parte donde se les llama que ya esten compilados.
+
+#region Declaracion
+// COMUN
+int nombreFuncion(int _variable1) {
+			< instrucciones...>
+			return _variable1;
+		}
+
+	// Metodo Lambda  -  (Expression-Bodied)
+		// Cuando el metodo solo tiene una linea, se puede simplificar su sintaxis:
+		int suma(int _num1, int _num2) => (_num1 + _num2);
+		// En este caso la expresion lambda (=>) sustituye al return.
+#endregion
+
+#region Sobrecarga
+// Consiste en declarar varios metodos con el mismo nombre.
+// De un metodo a otro debe cambiar o el tipo o el numero de argumentos que recibe, para asi poder diferenciar a que metodo llamamos.
+
+void metodo1(int _num1) System.Console.WriteLine(_num1);
+int metodo1(int _num1) => _num1;
+int metodo1(int _num1, int _num2) => (_num1 + _num2);
+#endregion
+
+#region Argumentos Opcionales
+	// Podemos definir argumentos con valor predefinido. Si no lo declaramos al llamar al metodo, este cogera el valor por defecto.
+	// Se deben añadir al final, despues del resto de argumentos obligatorios.
+		int suma(int _num1, int _num2, int _num3 = 0) => (_num1 + _num2 + _num3);
+#endregion
+
+#region Matrices
 //Argumentos
 static void nombreFuncion(int[,] matriz){
 				<instrucciones>
