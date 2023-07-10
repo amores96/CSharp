@@ -5,7 +5,7 @@ namespace TEST {
   class Program {
 
     static void Main(string[] args) {
-      //V1.0
+      //V1.0.1
       // El comando de PowerShell que quieres ejecutar
       string command = "Get-Process";
 
